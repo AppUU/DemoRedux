@@ -4,7 +4,8 @@ import {
 } from 'redux-type-actions';
 
 const actions = createActions({
-    setUser: createAction()
+    setUser: createAction(),
+    clearUser: createAction(),
 });
 
 export default actions;

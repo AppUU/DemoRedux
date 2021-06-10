@@ -6,12 +6,14 @@ const initialState = {
 
 export default (originalState = initialState, action) =>
     produce(originalState, (state) => {
-        console.log(action);
-        console.log(state)
+        console.log(`actionlog=>${JSON.stringify(action)}`);
+        console.log(`statelog=>${JSON.stringify(state)}`);
         switch (action.type) {
             case 'setUser':
-                state.user = action.user
-            case 'deleteUser':
-                state.user = null    
+                state.user = action.payload
+                return;
+            case 'clearUser':
+                state.user = undefined
+                return;
         }
     });

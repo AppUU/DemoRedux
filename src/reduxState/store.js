@@ -5,7 +5,7 @@ import * as reducers from './reducers';
 
 const middlewares = [];
 
-export const reducer = combineReducers({
+export const combinedReducers = combineReducers({
     userState: persistReducer({
         key: 'userState',
         storage: AsyncStorage,
@@ -13,14 +13,8 @@ export const reducer = combineReducers({
     }, reducers.userStateReducer),
 })
 
-const persistedReducer = persistReducer({
-    key: 'root',
-    storage: AsyncStorage,
-    blacklist: ['userState'],
-}, reducer);
-
 export const store = createStore(
-    reducer,
+    combinedReducers,
     applyMiddleware(...middlewares)
 )
 
