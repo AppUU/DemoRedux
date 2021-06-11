@@ -2,9 +2,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { combineReducers, createStore, applyMiddleware } from 'redux';
 import { persistReducer, persistStore } from 'redux-persist';
 import * as reducers from './reducers';
+import thunk from 'redux-thunk';
 
 /* 添加中间件 */
-const middlewares = [];
+const middlewares = [thunk];
 
 /* 将多个reducer作为对象整合到一起 */
 export const combinedReducers = combineReducers({
@@ -15,7 +16,7 @@ export const combinedReducers = combineReducers({
             storage: AsyncStorage,/* 存储方式 */
             blacklist: [],/* 黑名单 */
         },
-        reducers.userStateReducer
+        reducers.userStateReducer /** */
     ),
 })
 

@@ -1,17 +1,18 @@
-import React, { useEffect } from 'react';
-import { StyleSheet, View, SafeAreaView } from "react-native"
-import { RouteProp, useRoute, useIsFocused } from '@react-navigation/native';
+import React from 'react';
+import { StyleSheet, View } from "react-native"
+import { useIsFocused } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import actions from '../reduxState/actions';
-import { selectUser } from '../reduxState/selectors';
+import { selectToken, selectUser } from '../reduxState/selectors';
 import { Header, Button, Text } from 'react-native-elements';
 
 function HomeScreen({ navigation }) {
 
-    let userData = { name: 'zs' }
+    let userData = { name: 'zs', token: 'abcdefg123456' };
     const dispatch = useDispatch();
     const isFocused = useIsFocused();
-    const user = useSelector(selectUser)
+    const user = useSelector(selectUser);
+    const token = useSelector(selectToken);
 
     return (
         <View style={{ flex: 1 }}>
@@ -19,6 +20,7 @@ function HomeScreen({ navigation }) {
                 centerComponent={{ text: '首页', style: { fontSize: 18, color: '#fff' } }}
                 barStyle="light-content"
             />
+            <Text>{`token:${token}`}</Text>
             <Button
                 title={`存储数据${user?.name}`}
                 style={styles.buttonContainer}
