@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../screens/HomeScreen';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import DiscoverScreen from '../screens/DiscoverScreen';
+import MineScreen from '../screens/MineScreen';
 const { Navigator, Screen } = createBottomTabNavigator();
 
 export default function TabNavigator() {
@@ -26,7 +27,7 @@ export default function TabNavigator() {
             <Screen name="HomeScreen" component={HomeScreen} options={{ tabBarLabel: '首页' }} />
             <Screen name="VideoScreen" component={HomeScreen} options={{ tabBarLabel: '视频' }} />
             <Screen name="DiscoverScreen" component={DiscoverScreen} options={{ tabBarLabel: '发现' }} />
-            <Screen name="MineScreen" component={HomeScreen} options={{ tabBarLabel: '我的' }} />
+            <Screen name="MineScreen" component={MineScreen} options={{ tabBarLabel: '我的' }} />
         </Navigator>
     )
 }
